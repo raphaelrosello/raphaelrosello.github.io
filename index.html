@@ -1,67 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Raphael Rosello</title>
+    <title>RaphaelRosello</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Resume/CV Template for Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/style.css">
+</head> 
 
-    <!-- CSS  -->
-    <link href="css/materialize.css" type="text/css" th:href="@{/public/css/materialize.css}"   rel="stylesheet">
-    <link href="css/style.css" type="text/css" th:href="@{/public/css/style.css}"  rel="stylesheet" >
-    <link href="css/font-awesome.min.css" type="text/css" th:href="@{/public/css/font-awesome.min.css}"  rel="stylesheet" >
-    <!-- Modernizr -->
-</head>
-<body id="top" class="scrollspy cyan lighten-2">
+<body>
+    <!-- <div class="wrapper"> -->
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+                <img class="profile rounded-circle" src="assets/images/profile.png" alt="" />
+                <h1 class="name">John Raphael Rosello</h1>
+                <h3 class="tagline">Software Engineer</h3>
+            </div><!--//profile-container-->
+            
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <li class="email"><i class="fas fa-envelope"></i><a href="mailto: raphael.rosello@gmail.com">raphael.rosello@gmail.com</a></li>
+                    <li class="phone"><i class="fas fa-phone"></i>+639177201156</li>
+                    <li class="website"><i class="fas fa-globe"></i><a href="http://raphaelrosello.github.io/" target="_blank">raphaelrosello.github.io</a></li>
+                    <li class="linkedin"><i class="fab fa-linkedin-in"></i><a href="https://linkedin.com/in/raphaelrosello" target="_blank">linkedin.com/in/raphaelrosello</a></li>
+                    <li class="github"><i class="fab fa-github"></i><a href="https://github.com/raphaelrosello" target="_blank">github.com/raphaelrosello</a></li>
+                    <li class="bitbucket"><i class="fab fa-bitbucket"></i><a href="https://bitbucket.org/raphaelrosello" target="_blank">bitbucket.org/raphaelrosello</a></li>
+                </ul>
+            </div><!--//contact-container-->
+            <div class="education-container container-block">
+                <h2 class="container-block-title">Education</h2>
+                <div class="item">
+                    <h4 class="degree">
+                        Tertiary
+                        <br>
+                        BS in Information Technology
+                    </h4>
+                    <h5 class="meta">Lyceum of the Philippines University - Batangas</h5>
+                    <div class="time">2008 - 2012</div>
+                </div><!--//item-->
+                <div class="item">
+                    <h4 class="degree">Secondary</h4>
+                    <h5 class="meta">University of Batangas</h5>
+                    <div class="time">2004 - 2008</div>
+                </div><!--//item-->
+            </div><!--//education-container-->
+            
+            <div class="interests-container container-block">
+                <h2 class="container-block-title">Interests</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>Coding</li>
+                    <li>Traveling</li>
+                    <li>Biking</li>
+                    <li>Hiking</li>
+                    <li>Basketball</li>
+                </ul>
+            </div><!--//interests-->
+            
+        </div><!--//sidebar-wrapper-->
+        
+        <div class="main-wrapper">
+            
+            <section class="section summary-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Career Profile</h2>
+                <div class="summary">
+                    <p>Offering 6+ years of experience in Software Engineering with a demonstrated history of developing web applications and API in a Microservice and MVC architecture. Skilled primarily in PHP, Laravel/Lumen, Magento, Yii Framework, Java, Spring, AWS, and MySQL.</p>
+                </div><!--//summary-->
+            </section><!--//section-->
+            
+            <section class="section experiences-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>Experiences</h2>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Software Engineer</h3>
+                            <div class="time">Jun 2017 - Present</div>
+                        </div><!--//upper-row-->
+                        <div class="company">Indra Philippines Inc.</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <ul>
+                            <li>Contributed to the backend development of products  following agile methodology</li>
+                            <li>One of the pioneer developer of ourshop.com(AirAsia's inflight marketplace)</li>
+                            <li>Implemented Alipay and Unionpay payment, AirAsia's BIG points redemption to ourshop.com</li>
+                            <li>Built a catalog API that was used in AirAsia’s booking confirmation which led to sales increasing to 5%</li>
+                            <li>Provided mentoring and assistance to junior members and interns to ensure consistent output.</li>
+                            <li>Interview junior candidates that best fits to the team</li>
+                        </ul>
 
-<!-- Pre Loader -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Systems Engineer</h3>
+                            <div class="time">Feb 2014 - Mar 2017</div>
+                        </div><!--//upper-row-->
+                        <div class="company">Ubiquitous Technologies Philippines Inc.</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <ul>
+                        <li>Developed web and system applications using Java and PHP</li>
+                        <li>Created design specification which includes wire framing and creating of storyboard</li>
+                        <li>Provided mentoring and assistance to junior members to ensure consistent output.</li>
+                        <li>Led a development project and successfully kept the project on schedule during this period</li>
+                        <li>Performed quality assurance such as unit and integration testing, and creating test cases</li> 
+                        
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Associate Consultant</h3>
+                            <div class="time">Jul 2012 - Jan 2014</div>
+                        </div><!--//upper-row-->
+                        <div class="company">NCSI Philippines</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <ul>
+                            <li>Developed web and system application using Java</li>
+                            <li>Perform production support activities and provide resolution within the specified SLA depending on the severity of the issue.</li>
+                            <li>Perform unit and integration testing to ensure effectiveness of the application before production release</li>
+                            <li>Created report tool for monitoring of application health checks</li>
+                        </ul>
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+            </section><!--//section-->
+            
+            <section class="section projects-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-archive"></i></span>Projects</h2>
+                <div class="item">
+                    <span class="project-title"><a href="https://ourshop.com">Ourshop</a></span> - <span class="project-tagline">AirAsia's inflight marketplace where passengers can buy duty free &amp; duty paid products.</span>
+                    
+                </div><!--//item-->
+                <div class="item">
+                    <span class="project-title"><a href="https://kargox.ph/" target="_blank">Kargox</a></span> - <span class="project-tagline">Cargo trucking marketplace used by shippers who are in search for trucking company to ship their goods and truckers who wants to acquire clients.</span>
+                </div><!--//item-->
+                <div class="item">
+                    <span class="project-title"><a href="https://mache.tv" target="_blank">Mache.tv</a></span> - <span class="project-tagline">Japan-based live cast application for fans to enjoy conversations and play games with Japanese idols, celebrities, and comedians.</span>
+                </div><!--//item-->
+                <div class="item">
+                    <span class="project-title"><a href="https://sureferry.com" target="_blank">Sureferry</a></span> - <span class="project-tagline">Web-based ferry schedule and booking service platform that helps passengers for convenient travelling through ferry.</span>
+                </div><!--//item-->
+                <div class="item">
+                    <span class="project-title"><a href="https://smartfleet.ph" target="_blank">Smartfleet</a></span> - <span class="project-tagline">Cloud-based fleet management platform enabling transport fleets with operations automation, fleet monitoring and analytics solutions.</span>
+                </div><!--//item-->
+            </section><!--//section-->
+            
+            <section class="skills-section section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-rocket"></i></span>Skills &amp; Proficiency</h2>
+                <div class="skillset">        
+                    <div class="item">
+                        <h3 class="level-title">PHP &amp; Laravel/Lumen</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                               
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Magento 2</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="70"></div>
+						</div>                              
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Yii 2</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="70"></div>
+						</div>                                 
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">HTML5, CSS, &amp; Bootstrap</h3>
+                        <div class="progress level-bar">
+							    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Javascript &amp; Angular</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                  
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Java &amp; Spring</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div><!--//item-->
 
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
+                    <div class="item">
+                        <h3 class="level-title">AWS</h3>
+                        <div class="progress level-bar">
+                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>                                 
+                    </div><!--//item-->
 
-</div>
+                    <!-- <div class="item">
+                        <h3 class="level-title">Other Skills</h3>
+                        MySQL, Oracle, Linux, GIT, SVN
+                    </div>  --> 
+                </div>
+                
+            </section><!--//skills-section-->
+            
+        </div><!--//main-body-->
+    <!-- </div> -->
+        
+</body>
+</html> 
 
-<!--Navigation-->
- <div class="left">
-    <div class="container">
-      <ul id="slide-out" class="side-nav">
-        <li class="cyan-text lighten-2">  
-          <h5 class="header">raphael <b>rosello</b></h5>
-          <h6 class="header">software engineer</h6><br><br>
-        </li>
-        <li><a href="#intro">Get to know Me<span class="badge left"><i class="small mdi-action-account-circle blue-text"></i></span></a></li>
-        <li><a href="#intro"><span class="badge left"><i class="small mdi-action-work red-text"></i></span>Experience</a></li>
-        <li><a href="#intro"><span class="badge left"><i class="small mdi-action-assignment purple-text"></i></span>Skills</a></li>
-        <li><a href="#intro"><span class="badge left"><i class="small mdi-social-school green-text"></i></span>Education</a></li>
-      </ul><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="small mdi-navigation-menu black-text"></i></a>
-        </div>
-    </div>
-</div>
-
-<div class="section no-pad-bot" id="index-banner">
-        <div class="row center">
-          <br><br>
-          <h1 class="header shades-text text-white">raphael rosello</h1>
-          <h5 class="header shades-text text-white">software engineer</h5>
-        </div>
-
-    </div>
-      <div class="row center">
-        <br><br>
-        <div>      
-          <a href="www.facebook.com/raphaelrosello"><img src="images/facebook.png"></a>
-          <a href="www.twitter.com/raphaelrosello"><img src="images/twitter.png"></a>
-          <a href="ph.linkedin.com/in/raphaelrosello"><img src="images/linkedin.png"></a>
-          <a href="#"><img src="images/plus.png"></a>
-          <a href="www.instagram.com/raphaelrosello"><img src="images/instagram.png"></a>
-        </div>
-      </div>
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" ></script>
-    <script src="js/materialize.js" th:src="@{/public/js/materialize.js}" ></script>
-    <script src="js/init.js" th:src="@{/public/js/init.js}" ></script>
-
-    </body>
-</html>
