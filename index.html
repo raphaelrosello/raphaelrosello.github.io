@@ -1,261 +1,1766 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Raph Rosello — Independent E-Commerce Consultant based in Manila, Philippines. Enterprise Adobe Commerce, Magento 2, and Shopify specialist." />
+  <title>Raph Rosello | E-Commerce Consultant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <title>Raphael Rosello</title>
+    :root {
+      --bg:        #ffffff;
+      --surface:   #f8fafc;
+      --surface2:  #f1f5f9;
+      --accent:    #0f172a;
+      --accent-h:  #1e293b;
+      --green:     #16A34A;
+      --red:       #DC2626;
+      --blue:      #2563EB;
+      --heading:   #0f172a;
+      --body:      #475569;
+      --muted:     #94a3b8;
+      --border:    #e2e8f0;
+      --nav-h:     68px;
+      --radius:    4px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --mono:      'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    }
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-    <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="css/tooplate-style.css">
+    body {
+      background: var(--bg);
+      color: var(--body);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Scroll Animations ────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s var(--transition), transform 0.65s var(--transition);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.65s var(--transition), transform 0.65s var(--transition);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.65s var(--transition), transform 0.65s var(--transition);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── Navigation ──────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    #navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--heading);
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--heading); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn-hire {
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background var(--transition), color var(--transition);
+    }
+    .btn-hire:hover { background: var(--accent); color: #fff; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--heading);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-menu a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── Hero ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle grid background */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+    /* No decorative blobs — clean white bg */
+    #hero::after { display: none; }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-h1 {
+      font-family: var(--mono);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--heading);
+      margin-bottom: 16px;
+    }
+    .hero-h1 .accent { color: var(--accent); }
+
+    .hero-subtitle {
+      font-family: var(--mono);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+    .hero-stack-line {
+      font-family: var(--mono);
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 28px;
+      letter-spacing: 0;
+    }
+    /* Legacy typewriter kept for JS compatibility but hidden */
+    .hero-typewriter { display: none; }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--body);
+      max-width: 580px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 26px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover {
+      background: var(--accent-h);
+      border-color: var(--accent-h);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 26px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--heading);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bobble 2s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes bobble {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
+      transform: rotate(45deg);
+    }
+
+    /* ─── Section Commons ──────────────────────────────────────── */
+    section { padding: 96px 0; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--mono);
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+    .section-header { margin-bottom: 60px; }
+
+    .divider {
+      width: 40px; height: 2px;
+      border-radius: 0;
+      background: var(--border);
+      margin: 16px 0 0;
+    }
+
+    /* ─── About ─────────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--body);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--heading); font-weight: 600; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .stat-number {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-number span { color: var(--accent); }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Expertise ──────────────────────────────────────────────── */
+    #expertise { background: var(--surface2); }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .expertise-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .expertise-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--border);
+      transition: background var(--transition);
+    }
+    .expertise-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .expertise-card:hover::before { background: var(--accent); }
+
+    .card-number {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .card-icon {
+      display: none; /* Replaced by .card-number in new service layout */
+    }
+    .card-title {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 10px;
+    }
+    .card-includes {
+      list-style: none;
+      margin: 14px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .card-includes li {
+      font-size: 0.85rem;
+      color: var(--body);
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.5;
+    }
+    .card-includes li::before {
+      content: '—';
+      font-family: var(--mono);
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-family: var(--mono);
+      padding: 3px 10px;
+      border-radius: var(--radius);
+      font-size: 0.72rem;
+      font-weight: 400;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--body);
+    }
+    /* Subtle color tints on hover-visible labels only */
+    .tag-orange { color: var(--body);  border-color: var(--border); }
+    .tag-green  { color: var(--body);  border-color: var(--border); }
+    .tag-red    { color: var(--body);  border-color: var(--border); }
+    .tag-blue   { color: var(--body);  border-color: var(--border); }
+    .tag-muted  { color: var(--muted); border-color: var(--border); }
+
+    /* ─── Work Experience — Accordion Timeline ──────────────────── */
+    #experience { background: var(--bg); }
+
+    .timeline {
+      position: relative;
+      max-width: 820px;
+    }
+    /* Vertical rule */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 18px; left: 0; bottom: 18px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
+      border-radius: 2px;
+    }
+
+    /* ── Accordion item ── */
+    .acc-item {
+      position: relative;
+      padding-left: 36px;
+      margin-bottom: 10px;
+    }
+    .acc-item:last-child { margin-bottom: 0; }
+
+    /* Timeline dot */
+    .acc-item::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 18px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--border);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+      z-index: 1;
+    }
+    .acc-item.open::before {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(15,23,42,0.08);
+    }
+
+    /* ── Header button ── */
+    .acc-header {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .acc-header:hover { border-color: var(--heading); }
+    .acc-item.open .acc-header {
+      background: var(--surface2);
+      border-color: var(--accent);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: none;
+    }
+
+    .acc-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .acc-role {
+      font-family: var(--mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.3;
+    }
+    .acc-company {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .acc-meta {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .acc-period {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .acc-badge {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+      border: 1px solid;
+    }
+    .acc-badge--current {
+      color: var(--heading);
+      background: rgba(15,23,42,0.07);
+      border-color: rgba(15,23,42,0.18);
+    }
+    .acc-badge--previous {
+      color: var(--muted);
+      background: transparent;
+      border-color: var(--border);
+    }
+    .acc-badge--first {
+      color: var(--green);
+      background: rgba(22,163,74,0.06);
+      border-color: rgba(22,163,74,0.28);
+    }
+
+    /* Chevron icon */
+    .acc-chevron {
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--muted);
+      transition: transform var(--transition);
+      align-self: center;
+    }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); }
+
+    /* ── Smooth collapse — CSS grid trick ── */
+    .acc-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .acc-item.open .acc-body { grid-template-rows: 1fr; }
+
+    .acc-content {
+      overflow: hidden;
+      border: 1px solid var(--accent);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      background: var(--bg);
+    }
+    .acc-inner {
+      padding: 22px 24px;
+    }
+
+    /* Description paragraphs */
+    .acc-desc {
+      font-size: 0.9rem;
+      color: var(--body);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .acc-desc:last-of-type { margin-bottom: 0; }
+
+    /* Key impact / notable contribution block */
+    .acc-impact {
+      margin: 18px 0 0;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+    .acc-impact-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 7px;
+    }
+    .acc-impact p {
+      font-size: 0.875rem;
+      color: var(--body);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Platform mini-grid (SM Retail) */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+    .platform-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+    .platform-badge {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .platform-card h4 {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 5px;
+    }
+    .platform-card p {
+      font-size: 0.8rem;
+      color: var(--body);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 540px) {
+      .platform-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Tag variants for experience section */
+    .tag-tech {
+      color: var(--blue);
+      border-color: rgba(37,99,235,0.3);
+      background: rgba(37,99,235,0.05);
+    }
+    .tag-cert {
+      color: var(--green);
+      border-color: rgba(22,163,74,0.3);
+      background: rgba(22,163,74,0.05);
+    }
+    .tag-skill {
+      color: var(--muted);
+      border-color: var(--border);
+      background: transparent;
+    }
+
+    /* Tags row inside accordion body */
+    .acc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Mobile header wrapping */
+    @media (max-width: 600px) {
+      .acc-header { flex-wrap: wrap; gap: 10px; }
+      .acc-meta { width: 100%; justify-content: flex-start; }
+    }
+
+    /* ─── Credential line ───────────────────────────────────────── */
+    .cert-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .cert-badge {
+      height: 44px;
+      width: auto;
+      flex-shrink: 0;
+      display: block;
+    }
+    .cert-text {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--body);
+      line-height: 1.4;
+    }
+
+    /* ─── Companies ──────────────────────────────────────────────── */
+    #companies { background: var(--surface2); }
+
+    .companies-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 52px;
+    }
+
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .logo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 110px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .logo-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .logo-card img {
+      max-height: 44px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.55;
+      transition: opacity var(--transition), filter var(--transition);
+    }
+    .logo-card:hover img {
+      opacity: 1;
+      filter: none;
+    }
+    .logo-card .logo-name {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    /* Text-only logo for AirAsia */
+    .logo-text-only {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: -0.3px;
+      opacity: 0.6;
+      transition: opacity var(--transition), color var(--transition);
+    }
+    .logo-card:hover .logo-text-only {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    /* ─── Contact ────────────────────────────────────────────────── */
+    #contact { background: var(--surface2); }
+
+    .contact-card {
+      max-width: 560px;
+    }
+    .contact-card-intro {
+      font-size: 1rem;
+      color: var(--body);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: border-color var(--transition), transform var(--transition);
+      text-decoration: none;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius);
+      background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-link-info { display: flex; flex-direction: column; gap: 3px; }
+    .contact-link-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .contact-link-value {
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--heading);
+      font-weight: 500;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: 0;
+    }
+    .footer-logo span { color: var(--muted); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--heading); }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .btn-hire { display: none; }
+      .hamburger { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .logos-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      section { padding: 64px 0; }
+      .hero-h1 { font-size: 2.2rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .logos-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- MENU -->
-<nav class="navbar navbar-expand-sm navbar-light">
+  <!-- ── Navigation ──────────────────────────────────────────────── -->
+  <nav id="navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i> Raphael Rosello</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a href="#about" class="nav-link"><span data-hover="About">About</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#resume" class="nav-link"><span data-hover="Resume">Resume</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
-                </li>
-            </ul>
-        </div>
+      <a href="#hero" class="nav-logo">RR<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#companies">Companies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="mailto:raphael.rosello@gmail.com" class="btn-hire">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-</nav>
+  </nav>
 
-<!-- ABOUT -->
-<section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"      class="mobile-link">About</a>
+    <a href="#expertise"  class="mobile-link">Expertise</a>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#companies"  class="mobile-link">Companies</a>
+    <a href="#contact"    class="mobile-link">Contact</a>
+  </div>
+
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section id="hero">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-12 align-items-center">
-                <div class="about-text">
-                    <h1 class="animated animated-text">
-                        <span>Hello, World! I'm</span>
-                        <div class="animated-info">
-                            <span class="animated-item">Raphael Rosello</span>
-                            <span class="animated-item">a Magento Expert</span>
+      <div class="hero-inner">
+        <div class="hero-badge reveal">
+          <span class="dot"></span>
+          Available for projects &nbsp;·&nbsp; Manila, Philippines
+        </div>
+        <h1 class="hero-h1 reveal">Raph Rosello.</h1>
+        <p class="hero-subtitle reveal">E-Commerce Consultant</p>
+        <p class="hero-stack-line reveal">Magento &nbsp;·&nbsp; Shopify &nbsp;·&nbsp; Web Development</p>
+        <!-- Hidden — kept so typewriter JS doesn't throw -->
+        <div class="hero-typewriter" aria-hidden="true">
+          <span id="typewriter-text"></span>
+        </div>
+        <p class="hero-desc reveal">
+          I help businesses design, build, and scale e-commerce operations — from enterprise
+          Adobe Commerce Cloud deployments to lean Shopify builds.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#experience" class="btn-primary">View my work</a>
+          <a href="#contact" class="btn-secondary">
+            Get in touch
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
-                        </div>
-                    </h1>
+  <!-- ── About ────────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <span class="section-tag">About me</span>
+          <h2 class="section-title">Independent consultant.<br />Enterprise background.</h2>
+          <div class="divider" style="margin-bottom:28px;"></div>
+          <p>
+            I'm an independent e-commerce consultant based in Manila, Philippines. I work with brands
+            to design, build, and scale their commerce operations — whether that's a ground-up Adobe
+            Commerce Cloud implementation or a focused Shopify optimization engagement.
+          </p>
+          <p>
+            My background spans enterprise retail at the scale of <strong>SM Retail</strong> and
+            agency work across clients in the Philippines, Australia, the UK, and Japan. I bring
+            both the technical depth to build it and the commercial perspective to make it matter.
+          </p>
+          <p>
+            I'm platform-agnostic but opinionated — I'll recommend what's right for your business,
+            not what's easiest to sell.
+          </p>
+          <!-- Stack -->
+          <div class="stack-block" style="margin-top:28px;">
+            <p style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;">Stack</p>
+            <div class="tag-list">
+              <span class="tag">Magento 2</span>
+              <span class="tag">Adobe Commerce</span>
+              <span class="tag">Shopify</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">REST</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Docker</span>
+              <span class="tag">AWS</span>
+            </div>
+          </div>
 
-                    <p>Building a successful online store is a challenge. I am highly energetic in creating end to end e-commerce solution specializing in Magento Design, Development & Strategy</p>
+          <!-- Credential -->
+          <div class="cert-line">
+            <img
+              src="images/acp-badge.png"
+              alt="Adobe Certified Professional badge"
+              class="cert-badge"
+              onerror="this.style.display='none'"
+            />
+            <span class="cert-text">Adobe Certified Professional<br />Adobe Commerce Developer (2019–2023)</span>
+          </div>
+        </div>
+        <div class="about-stats reveal-right">
+          <div class="stat-card">
+            <div class="stat-number">14<span>+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20<span>+</span></div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10<span>+</span></div>
+            <div class="stat-label">Enterprise Brands</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Platform Specialties</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ── Services ──────────────────────────────────────────────────── -->
+  <section id="expertise">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Services</span>
+        <h2 class="section-title">How I can help</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="expertise-grid">
+
+        <!-- 01 -->
+        <div class="expertise-card reveal">
+          <span class="card-number">01 / E-Commerce Consultancy</span>
+          <h3 class="card-title">Strategic advisory for brands that want to build or scale their commerce operations.</h3>
+          <p class="card-desc">
+            Whether you're evaluating platforms, planning a replatform, or trying to get more out of your current stack —
+            I provide structured, vendor-agnostic guidance backed by enterprise delivery experience.
+          </p>
+          <ul class="card-includes">
+            <li>Platform selection &amp; fit assessment (Magento, Shopify, headless)</li>
+            <li>Migration planning &amp; risk analysis</li>
+            <li>Performance &amp; conversion audits</li>
+            <li>Commerce roadmap &amp; prioritisation</li>
+            <li>Vendor &amp; agency evaluation support</li>
+          </ul>
+          <div class="tag-list">
+            <span class="tag">Magento 2</span>
+            <span class="tag">Adobe Commerce</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Roadmap</span>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="expertise-card reveal">
+          <span class="card-number">02 / Magento &amp; Shopify Development</span>
+          <h3 class="card-title">End-to-end technical delivery on the platforms I know best.</h3>
+          <p class="card-desc">
+            From custom module and app development to complex third-party integrations and performance tuning —
+            I build stores that are reliable, maintainable, and engineered to handle real traffic.
+          </p>
+          <ul class="card-includes">
+            <li>Custom Magento 2 &amp; Adobe Commerce module development</li>
+            <li>Shopify theme &amp; custom app development</li>
+            <li>Payment, shipping &amp; ERP integrations</li>
+            <li>Performance optimisation &amp; scalability</li>
+            <li>Platform upgrades &amp; migrations</li>
+          </ul>
+          <div class="tag-list">
+            <span class="tag">Magento 2</span>
+            <span class="tag">Adobe Commerce</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">PHP</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">REST</span>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="expertise-card reveal">
+          <span class="card-number">03 / Web Development</span>
+          <h3 class="card-title">Full-stack web applications built for clarity, performance, and longevity.</h3>
+          <p class="card-desc">
+            Custom web applications, back-end APIs, and polished front-end interfaces — built on
+            modern PHP and JavaScript with a focus on clean architecture and maintainable code.
+          </p>
+          <ul class="card-includes">
+            <li>Laravel application &amp; API development</li>
+            <li>Custom admin panels &amp; dashboards</li>
+            <li>REST API design &amp; integration</li>
+            <li>Front-end development (HTML, CSS, JavaScript)</li>
+            <li>E-commerce portal &amp; B2B platform builds</li>
+          </ul>
+          <div class="tag-list">
+            <span class="tag">Laravel</span>
+            <span class="tag">PHP</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="expertise-card reveal">
+          <span class="card-number">04 / Mobile Development</span>
+          <h3 class="card-title">Native-quality mobile apps for merchants who need a mobile-first experience.</h3>
+          <p class="card-desc">
+            Cross-platform mobile apps built with Flutter — ideal for commerce companion apps,
+            customer portals, or loyalty programmes that need to work seamlessly on iOS and Android.
+          </p>
+          <ul class="card-includes">
+            <li>Cross-platform iOS &amp; Android app development</li>
+            <li>Commerce &amp; catalogue integration</li>
+            <li>Customer account &amp; loyalty app builds</li>
+            <li>REST &amp; GraphQL API integration</li>
+            <li>App store submission &amp; maintenance</li>
+          </ul>
+          <div class="tag-list">
+            <span class="tag">Flutter</span>
+            <span class="tag">Dart</span>
+            <span class="tag">iOS</span>
+            <span class="tag">Android</span>
+            <span class="tag">Firebase</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Work Experience ────────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Career</span>
+        <h2 class="section-title">Work Experience</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="timeline" id="experience-timeline">
+
+        <!-- 1 · SM Retail — CURRENT (open by default) -->
+        <div class="acc-item open reveal" data-acc>
+          <button class="acc-header" aria-expanded="true">
+            <div class="acc-title-group">
+              <span class="acc-role">IT Manager — E-commerce</span>
+              <span class="acc-company">SM Retail</span>
+            </div>
+            <div class="acc-meta">
+              <span class="acc-period">Aug 2023 — Present</span>
+              <span class="acc-badge acc-badge--current">Current</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Responsible for the full e-commerce function at SM Retail — platform architecture, strategic direction, vendor coordination, and reliability across three properties.</p>
+                <p class="acc-desc">Work cross-functionally with IT, marketing, and customer service to keep platform direction aligned with business goals. Coordinate directly with external vendors on Adobe Commerce feature delivery.</p>
+
+                <div class="platform-grid">
+                  <div class="platform-card">
+                    <span class="platform-badge">Built from scratch</span>
+                    <h4>smacnshop.com</h4>
+                    <p>Led architecture, strategic planning, commercial launch, and ongoing maintenance of this national-scale Adobe Commerce platform.</p>
+                  </div>
+                  <div class="platform-card">
+                    <span class="platform-badge">Feature delivery</span>
+                    <h4>ShopSM &amp; SM Markets</h4>
+                    <p>Delivered business features and platform optimizations across both properties, improving reliability and commercial outcomes.</p>
+                  </div>
                 </div>
-            </div>
 
-        </div>
-    </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="project py-5" id="project">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-11 text-center mx-auto col-12">
-                <div class="col-lg-8 mx-auto">
-                    <h2>Websites that I helped design, develop, and maintain</h2>
+                <div class="acc-impact">
+                  <span class="acc-impact-label">Key impact</span>
+                  <p>End-to-end ownership of a national-scale Adobe Commerce platform — from zero to live, through to continuous improvement.</p>
                 </div>
 
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="project-info">
-                            <a href="https://www.tasaki.co.jp/" target=”_blank”><img src="images/project/tasaki.png" class="img-fluid" alt="project image"></a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="project-info">
-                            <a href="https://www.made-to-last.co.uk/" target=”_blank”></a><img src="images/project/mtl.png" class="img-fluid" alt="project image"></div>
-                    </div>
-                    
-                    <div class="item">
-                        <div class="project-info">
-                            <a href="https://thenextpair.com.au/" target=”_blank”></a><img src="images/project/tnp.png" class="img-fluid" alt="project image"></div>
-                    </div>
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Adobe Commerce</span>
+                  <span class="tag tag-tech">Magento 2</span>
+                  <span class="tag tag-skill">E-commerce Strategy</span>
+                  <span class="tag tag-skill">Vendor Management</span>
+                  <span class="tag tag-skill">Cross-functional Leadership</span>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
 
-<!-- FEATURES -->
-<section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mx-auto">
-                <h2 class="mb-4">I'm proud to have worked and collaborated with some awesome companies</h2>
+        <!-- 2 · Globe Telecom -->
+        <div class="acc-item reveal" data-acc>
+          <button class="acc-header" aria-expanded="false">
+            <div class="acc-title-group">
+              <span class="acc-role">Senior Magento Developer</span>
+              <span class="acc-company">Globe Telecom</span>
             </div>
+            <div class="acc-meta">
+              <span class="acc-period">Sep 2021 — Aug 2023</span>
+              <span class="acc-badge acc-badge--previous">Previous</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Led custom Magento API development and backend integrations for Globe's online web app. Worked directly with stakeholders to design platform solutions for specific business use cases.</p>
+                <p class="acc-desc">Drove CI/CD pipeline improvements that accelerated release cycles, mentored the dev team, ran code reviews, and contributed to technical hiring decisions.</p>
 
-            <div class="col-lg-6 col-12">
-
-                <div class="timeline">
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>Present</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Magento Developer</span><small>Globe Telecom</small></h4>
-                            <p>I was responsible in building a unified catalog for Globe's products and promos on both web and mobile app. I also served as the consultant for Magento solutions.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2021</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Lead Magento Developer</span><small>codingchiefs</small></h4>
-                            <p>I was tasked to lead the local team for Dutch brands to develop and maintain their Magento websites</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2020</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Senior Magento Developer<small>iScale Solutions</small></h4>
-                            <p>Developed an online store for a Japanese Jewellery brand and responsibly led the team of 4 to deliver the project as agreed</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2018</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Magento Developer<small>acidgreen</small></h4>
-                            <p>I was tasked as a frontend and backend Magento Developer for Australian brands. This is also where I earned my certification as an <b>Adobe Certified Professional — Adobe Commerce Developer</b>.</p>
-                        </div>
-                    </div>
-
+                <div class="acc-impact">
+                  <span class="acc-impact-label">Notable contribution</span>
+                  <p>Designed a unified product catalog for the GlobeOne app — removing dependency on multiple third-party platforms and cutting significant licensing and development overhead.</p>
                 </div>
-            </div>
 
-            <div class="col-lg-6 col-12">
-
-                <div class="timeline">
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2017</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Magento Developer</span><small>Indra</small></h4>
-                            <p>I was part of the Magento Backend team that developed APIs for an Airline company that sells duty free products.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2014</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Software Engineer</span><small>Ubiquitous PH Inc</small></h4>
-                            <p>I was part of a team for all the in-house and client-based web development assignments.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-wrapper">
-                        <div class="timeline-yr">
-                            <span>2012</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4><span>Associate Consultant</span><small>NCSI Philippines</small></h4>
-                            <p>I was part of a team that developed and maintain Java applications for clients.</p>
-                        </div>
-                    </div>
-
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Magento 2</span>
+                  <span class="tag tag-skill">REST APIs</span>
+                  <span class="tag tag-skill">CI/CD</span>
+                  <span class="tag tag-skill">Team Leadership</span>
+                  <span class="tag tag-skill">Code Review</span>
                 </div>
+              </div>
             </div>
-
+          </div>
         </div>
-    </div>
-</section>
 
-<!-- CONTACT -->
-<section class="contact py-5" id="contact">
+        <!-- 3 · CodingChiefs -->
+        <div class="acc-item reveal" data-acc>
+          <button class="acc-header" aria-expanded="false">
+            <div class="acc-title-group">
+              <span class="acc-role">Lead Magento Developer</span>
+              <span class="acc-company">CodingChiefs</span>
+            </div>
+            <div class="acc-meta">
+              <span class="acc-period">Apr 2021 — Sep 2021</span>
+              <span class="acc-badge acc-badge--previous">Previous</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Developed and maintained Magento modules and extensions for multiple clients — backend, frontend, and theme work. Integrated Magento into clients' Pimcore websites, ensuring seamless cross-platform data flow.</p>
+                <p class="acc-desc">Owned code reviews and production deployments across all client projects, maintaining consistent quality standards in a fully remote team.</p>
+
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Magento 2</span>
+                  <span class="tag tag-skill">Pimcore Integration</span>
+                  <span class="tag tag-skill">Module Development</span>
+                  <span class="tag tag-skill">Frontend Theming</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 · iScale Solutions -->
+        <div class="acc-item reveal" data-acc>
+          <button class="acc-header" aria-expanded="false">
+            <div class="acc-title-group">
+              <span class="acc-role">Magento Lead Developer</span>
+              <span class="acc-company">iScale Solutions</span>
+            </div>
+            <div class="acc-meta">
+              <span class="acc-period">Feb 2020 — Apr 2021</span>
+              <span class="acc-badge acc-badge--previous">Previous</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Built Magento Open Source modules from scratch — backend development, deployment configurations, performance optimization, and custom payment and shipping methods.</p>
+                <p class="acc-desc">Served as technical lead: ran code reviews, mentored junior developers, shaped architectural decisions, and recommended extensions to accelerate delivery timelines.</p>
+
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Magento Open Source</span>
+                  <span class="tag tag-skill">Custom Modules</span>
+                  <span class="tag tag-skill">Performance Optimization</span>
+                  <span class="tag tag-skill">Mentoring</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 · acidgreen -->
+        <div class="acc-item reveal" data-acc>
+          <button class="acc-header" aria-expanded="false">
+            <div class="acc-title-group">
+              <span class="acc-role">Magento Developer</span>
+              <span class="acc-company">acidgreen</span>
+            </div>
+            <div class="acc-meta">
+              <span class="acc-period">Sep 2018 — Feb 2020</span>
+              <span class="acc-badge acc-badge--previous">Previous</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Worked across Magento Commerce and Open Source projects — backend development, deployment configurations, performance tuning, version upgrades, third-party extension management, and frontend theme work.</p>
+
+                <div class="acc-impact">
+                  <span class="acc-impact-label">Certification</span>
+                  <p>Earned the <strong>Adobe Certified Professional — Adobe Commerce Developer</strong> certification, formalising my platform expertise.</p>
+                </div>
+
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Magento Commerce</span>
+                  <span class="tag tag-tech">Magento Open Source</span>
+                  <span class="tag tag-cert">Adobe Certified</span>
+                  <span class="tag tag-skill">Version Upgrades</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 · Indra — FIRST ROLE -->
+        <div class="acc-item reveal" data-acc>
+          <button class="acc-header" aria-expanded="false">
+            <div class="acc-title-group">
+              <span class="acc-role">Software Engineer (Magento)</span>
+              <span class="acc-company">Indra</span>
+            </div>
+            <div class="acc-meta">
+              <span class="acc-period">Jun 2017 — Sep 2018</span>
+              <span class="acc-badge acc-badge--first">First role</span>
+              <span class="acc-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <div class="acc-inner">
+                <p class="acc-desc">Started my career here. Contributed to the backend architecture of an airline's duty-free shopping platform — my first exposure to production-scale e-commerce and the foundation everything since has been built on.</p>
+
+                <div class="acc-tags">
+                  <span class="tag tag-tech">Magento</span>
+                  <span class="tag tag-skill">Backend Development</span>
+                  <span class="tag tag-skill">Airline Retail</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /timeline -->
+    </div>
+  </section>
+
+  <!-- ── Companies ──────────────────────────────────────────────────── -->
+  <section id="companies">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-12 pb-5">
-                <h3>Contact me</h3>
-                <ul class="navbar-nav float-left social-links footer-social">
-                    <li>
-                        <span class="email"><i class="bi bi-envelope"></i></span>
-                        <a href="mailto:raphael.rosello@gmail.com"><b>raphael.rosello@gmail.com</b></a>
+      <div class="section-header reveal">
+        <span class="section-tag">Clients & Partners</span>
+        <h2 class="section-title">Companies I've Worked With</h2>
+        <div class="divider"></div>
+      </div>
+      <p class="companies-intro reveal">
+        I'm proud to have collaborated with some of the most recognized brands across the Philippines,
+        Australia, the UK, and Japan.
+      </p>
+      <div class="logos-grid">
 
-                    </li>
-                    <li>
-                        <span class="phone"><i class="bi bi-telephone"></i></span><b>+639177201156</b>
-                    </li>
-            </div>
-
-            <div class="col-lg-3 col-12">
-                <h3>Socials</h3>
-                <ul class="navbar-nav float-left social-links footer-social">
-                    <li class="nav-item">
-                        <a class="nav-link social-facebook" target=”_blank” href="https://www.facebook.com/raphaelrosello"><i class="bi bi-facebook"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link social-linkedin" target=”_blank” href="https://www.linkedin.com/in/raphaelrosello"><i class="bi bi-linkedin"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link social-instagram" target=”_blank” href="https://www.instagram.com/raphaelrosello"><i class="bi bi-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-
+        <div class="logo-card reveal">
+          <img src="images/projects/sm.jpg" alt="SMAC&SHOP" />
+          <span class="logo-name">SMAC&amp;SHOP</span>
         </div>
-    </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="footer py-5">
+        <div class="logo-card reveal">
+          <img src="images/projects/sm.jpg" alt="SM Retail" />
+          <span class="logo-name">SM Retail</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/markets.png" alt="SM Markets" />
+          <span class="logo-name">SM Markets</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/globe.png" alt="Globe Telecom" />
+          <span class="logo-name">Globe</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <span class="logo-text-only">AirAsia</span>
+          <span class="logo-name">AirAsia</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/the-bakery.jpg" alt="The Bakery" />
+          <span class="logo-name">The Bakery</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/mtl.png" alt="Made To Last UK" />
+          <span class="logo-name">Made To Last UK</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/tasaki.png" alt="Tasaki JP" />
+          <span class="logo-name">Tasaki JP</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/tnp.avif" alt="The Next Pair AU" />
+          <span class="logo-name">The Next Pair AU</span>
+        </div>
+
+        <div class="logo-card reveal">
+          <img src="images/projects/intex.png" alt="Intex AU" />
+          <span class="logo-name">Intex AU</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ────────────────────────────────────────────────────── -->
+  <section id="contact">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-12">
-                <p class="copyright-text text-center">Copyright &copy; 2023 All rights reserved</p>
-                <p class="copyright-text text-center">Template by <a rel="nofollow" target=”_blank” href="https://www.facebook.com/tooplate">Tooplate</a></p>
+      <div class="section-header reveal">
+        <span class="section-tag">Let's Talk</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="contact-card reveal">
+        <p class="contact-card-intro">
+          Available for consulting engagements, project builds, and retainer arrangements.<br />
+          Reach out directly — no forms, no friction.
+        </p>
+        <div class="contact-links">
+
+          <a href="mailto:raphael.rosello@gmail.com" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--body)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
             </div>
+            <div class="contact-link-info">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">raphael.rosello@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/raphaelrosello" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--body)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </div>
+            <div class="contact-link-info">
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">linkedin.com/in/raphaelrosello</span>
+            </div>
+          </a>
 
         </div>
+      </div>
     </div>
-</footer>
+  </section>
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/Headroom.js"></script>
-<script src="js/jQuery.headroom.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/custom.js"></script>
+  <!-- ── Footer ─────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">RR<span>.</span></span>
+        <span class="footer-copy">Handcrafted by Raphael Rosello © 2026</span>
+        <div class="footer-links">
+          <a href="https://github.com/raphaelrosello" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/raphaelrosello" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:raphael.rosello@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
+  <script>
+    /* ── Navbar scroll state ─────────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    /* ── Hamburger / Mobile menu ─────────────────────────────────── */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+    /* ── Smooth scroll ───────────────────────────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 68;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ── Intersection Observer — scroll animations ───────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings inside a grid
+          const siblings = entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+          const idx = Array.from(siblings).indexOf(entry.target);
+          const delay = Math.min(idx * 80, 400);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    /* ── Typewriter effect ───────────────────────────────────────── */
+    const phrases = [
+      'E-commerce Consultant.',
+      'Magento Expert.',
+      'Adobe Commerce Expert.',
+      'Shopify Expert.',
+      'Laravel Engineer.',
+    ];
+    const el     = document.getElementById('typewriter-text');
+    let pIdx     = 0;
+    let cIdx     = 0;
+    let deleting = false;
+    let paused   = false;
+
+    function type() {
+      if (paused) return;
+
+      const phrase = phrases[pIdx];
+
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++cIdx);
+        if (cIdx === phrase.length) {
+          paused = true;
+          setTimeout(() => { paused = false; deleting = true; type(); }, 2200);
+          return;
+        }
+        setTimeout(type, 60);
+      } else {
+        el.textContent = phrase.slice(0, --cIdx);
+        if (cIdx === 0) {
+          deleting = false;
+          pIdx = (pIdx + 1) % phrases.length;
+          setTimeout(type, 400);
+          return;
+        }
+        setTimeout(type, 30);
+      }
+    }
+
+    // Start after a short delay so hero has rendered
+    setTimeout(type, 800);
+
+    /* ── Experience accordion ────────────────────────────────────── */
+    (function () {
+      const items = document.querySelectorAll('[data-acc]');
+
+      items.forEach(item => {
+        const btn = item.querySelector('.acc-header');
+
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+
+          // Close all
+          items.forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.acc-header').setAttribute('aria-expanded', 'false');
+          });
+
+          // Open this one if it was closed
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+
+  </script>
 </body>
 </html>
