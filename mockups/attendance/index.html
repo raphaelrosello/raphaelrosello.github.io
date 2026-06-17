@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attendance / DTR · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="attendance" data-base="../" data-title="Attendance / DTR" data-crumbs="Attendance / DTR">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-lg font-semibold text-gray-900">Daily time record</h2>
+      <p class="text-sm text-gray-500">Clock in/out → hours → feeds payroll</p></div>
+    <div class="flex gap-2"><button class="btn btn-ghost">Export DTR</button><button class="btn btn-primary">Add entry</button></div>
+  </div>
+
+  <div class="card p-3 mb-4 flex flex-wrap items-center gap-2">
+    <input class="input" style="width:9rem" type="date" value="2026-06-15">
+    <select class="input" style="width:auto"><option>All staff</option><option>Office</option><option>Crew</option></select>
+    <select class="input" style="width:auto"><option>All shifts</option><option>Day</option><option>Night</option></select>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-4 mb-5">
+    <div class="card p-4"><div class="text-xs text-gray-500">Present</div><div class="text-xl font-bold tnum mt-1 text-emerald-600">126</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">Late</div><div class="text-xl font-bold tnum mt-1 text-amber-600">7</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">Absent</div><div class="text-xl font-bold tnum mt-1 text-rose-600">3</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">On leave</div><div class="text-xl font-bold tnum mt-1">5</div></div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>ID</th><th>Employee</th><th>Position</th><th class="num">Time in</th><th class="num">Time out</th><th class="num">Hours</th><th class="num">O.T.</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="tnum">O-031</td><td class="font-medium">Hilado, Ariel</td><td>Accounting</td><td class="num tnum">07:58</td><td class="num tnum">17:05</td><td class="num tnum">8.1</td><td class="num tnum">0.0</td><td><span class="badge badge-green">Present</span></td></tr>
+          <tr><td class="tnum">D-104</td><td class="font-medium">Marcojos, Eric B.</td><td>Driver</td><td class="num tnum">18:40</td><td class="num tnum">06:10</td><td class="num tnum">11.5</td><td class="num tnum">2.5</td><td><span class="badge badge-blue">Night</span></td></tr>
+          <tr><td class="tnum">C-209</td><td class="font-medium">Pacquiao, Rebe C.</td><td>Conductor</td><td class="num tnum">18:52</td><td class="num tnum">06:10</td><td class="num tnum">11.3</td><td class="num tnum">2.3</td><td><span class="badge badge-amber">Late</span></td></tr>
+          <tr><td class="tnum">O-044</td><td class="font-medium">Reyes, Carla</td><td>Teller</td><td class="num tnum">—</td><td class="num tnum">—</td><td class="num tnum">0.0</td><td class="num tnum">0.0</td><td><span class="badge badge-red">Absent</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

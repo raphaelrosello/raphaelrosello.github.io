@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payslip · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="payroll" data-base="../" data-title="Payslip" data-crumbs="Payroll>payroll/index.html|Payslip">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="btn btn-ghost px-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a>
+      <div><h2 class="text-lg font-semibold text-gray-900">Payslip — Marcojos, Eric B.</h2>
+        <p class="text-sm text-gray-500">D-104 · Driver · Jun 1–15, 2026</p></div>
+    </div>
+    <button class="btn btn-ghost" onclick="window.print()">Print</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-3">
+    <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 border-b border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">Earnings</h3></div>
+        <table class="grid">
+          <tbody>
+            <tr><td>Basic (15 days)</td><td class="num tnum">9,800.00</td></tr>
+            <tr><td>Overtime</td><td class="num tnum">1,240.00</td></tr>
+            <tr><td>Holiday pay</td><td class="num tnum">0.00</td></tr>
+            <tr><td>Allowance</td><td class="num tnum">900.00</td></tr>
+          </tbody>
+          <tfoot><tr><td>Gross pay</td><td class="num tnum">11,940.00</td></tr></tfoot>
+        </table>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 border-b border-gray-100"><h3 class="font-semibold text-gray-900 text-sm">Deductions</h3></div>
+        <table class="grid">
+          <tbody>
+            <tr><td>SSS</td><td class="num tnum">810.00</td></tr>
+            <tr><td>PhilHealth</td><td class="num tnum">300.00</td></tr>
+            <tr><td>Pag-IBIG</td><td class="num tnum">200.00</td></tr>
+            <tr><td>Withholding tax</td><td class="num tnum">640.00</td></tr>
+            <tr><td>Cash advance</td><td class="num tnum">1,500.00</td></tr>
+            <tr><td>Canteen · Grocery</td><td class="num tnum">0.00</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total deductions</td><td class="num tnum">3,450.00</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="card p-5 lg:sticky lg:top-20 h-fit">
+      <h3 class="font-semibold text-gray-900 text-sm mb-3">Summary</h3>
+      <div class="ladder"><span class="text-gray-600">Gross pay</span><span class="tnum font-medium">11,940.00</span></div>
+      <div class="ladder minus"><span class="text-gray-600">− Deductions</span><span class="v tnum">3,450.00</span></div>
+      <div class="ladder grand"><span>Net pay</span><span class="tnum text-indigo-700">8,490.00</span></div>
+      <div class="mt-4 text-xs text-gray-500 space-y-1">
+        <div class="flex justify-between"><span>SSS no.</span><span class="tnum">34-1234567-8</span></div>
+        <div class="flex justify-between"><span>TIN</span><span class="tnum">123-456-789</span></div>
+        <div class="flex justify-between"><span>Pay date</span><span>Jun 16, 2026</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

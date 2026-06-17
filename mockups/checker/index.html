@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account Checker · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="checker" data-base="../" data-title="Account Checker" data-crumbs="Account Checker">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="mb-4">
+    <h2 class="text-lg font-semibold text-gray-900">Account checker</h2>
+    <p class="text-sm text-gray-500">Reconciliation drill-down — query the journal by book × GL × sub-account × date × route</p>
+  </div>
+
+  <!-- filter row -->
+  <div class="card p-4 mb-5">
+    <div class="grid sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div><label class="label">Book</label><select class="input"><option>All</option><option>CRJ</option><option>GJ</option><option>CHDJ</option><option>CADJ</option></select></div>
+      <div><label class="label">GL account</label><select class="input"><option>10000 · Cash</option><option>22000 · Passenger Fares</option><option>23000 · Commission</option><option>24011 · Interest Exp</option></select></div>
+      <div><label class="label">Sub-account</label><select class="input"><option>All</option><option>10000</option><option>10000-CB1</option><option>10000-CSO</option><option>10000-PC</option></select></div>
+      <div><label class="label">Route</label><select class="input"><option>All</option><option>Batangas</option><option>RORO</option><option>BICOL</option><option>San Juan</option></select></div>
+      <div><label class="label">From</label><input class="input" type="date" value="2026-06-01"></div>
+      <div><label class="label">To</label><input class="input" type="date" value="2026-06-15"></div>
+    </div>
+    <div class="flex justify-end gap-2 mt-3">
+      <button class="btn btn-ghost">Reset</button>
+      <button class="btn btn-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-3-3"/></svg>Run query</button>
+    </div>
+  </div>
+
+  <!-- summary -->
+  <div class="grid gap-4 sm:grid-cols-3 mb-5">
+    <div class="card p-4"><div class="text-xs font-medium text-gray-500">Total debits</div><div class="text-xl font-bold tnum mt-1">₱128,540.00</div></div>
+    <div class="card p-4"><div class="text-xs font-medium text-gray-500">Total credits</div><div class="text-xl font-bold tnum mt-1">₱128,540.00</div></div>
+    <div class="card p-4 bg-emerald-50 ring-1 ring-emerald-200"><div class="text-xs font-medium text-emerald-700">Difference</div><div class="text-xl font-bold tnum mt-1 text-emerald-700">₱0.00 · balanced</div></div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between">
+      <h3 class="font-semibold text-gray-900 text-sm">Results · GL 10000 · all routes · 06/01–06/15</h3>
+      <span class="text-xs text-gray-400">subtotaled by sub-account</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>Date</th><th>Book</th><th>Sub-acct</th><th>Ref</th><th>Particular</th><th>Route</th><th class="num">Debit</th><th class="num">Credit</th></tr></thead>
+        <tbody>
+          <tr><td>06/15</td><td><span class="badge badge-green">CRJ</span></td><td class="tnum">10000</td><td>BR-1182</td><td>Cash collected</td><td>Batangas</td><td class="num tnum">33,810.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-green">CRJ</span></td><td class="tnum">10000</td><td>BR-1183</td><td>Cash collected</td><td>Batangas</td><td class="num tnum">28,990.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-green">CRJ</span></td><td class="tnum">10000</td><td>RR-0457</td><td>Cash collected</td><td>RORO</td><td class="num tnum">41,205.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr class="bg-gray-50"><td colspan="6" class="font-medium text-gray-600">Subtotal · 10000 Cash on Hand</td><td class="num tnum font-semibold">104,005.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-green">CRJ</span></td><td class="tnum">10000-CSO</td><td>BR-1182</td><td>Cash short</td><td>Batangas</td><td class="num tnum">50.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-green">CRJ</span></td><td class="tnum">10000-CSO</td><td>SJ-0912</td><td>Cash short</td><td>San Juan</td><td class="num tnum">310.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr class="bg-gray-50"><td colspan="6" class="font-medium text-gray-600">Subtotal · 10000-CSO Short/Over</td><td class="num tnum font-semibold">360.00</td><td class="num tnum text-gray-300">—</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-amber">CHDJ</span></td><td class="tnum">10000-CB1</td><td>CHK-100482</td><td>Interest payment</td><td>San Juan</td><td class="num tnum text-gray-300">—</td><td class="num tnum">8,420.00</td></tr>
+          <tr><td>06/15</td><td><span class="badge badge-indigo">CADJ</span></td><td class="tnum">10000-PC</td><td>CA-00731</td><td>Cash advance — D-117</td><td>RORO</td><td class="num tnum">1,500.00</td><td class="num tnum text-gray-300">—</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="6">Grand total</td><td class="num tnum">105,865.00</td><td class="num tnum">8,420.00</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+  <p class="text-xs text-gray-400 mt-3">This is the accountants' reconciliation workhorse (§5). Rows drill back to the source journal entry / remittance.</p>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

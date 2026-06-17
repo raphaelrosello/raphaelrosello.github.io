@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>201 Files · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="hr" data-base="../" data-title="201 Files" data-crumbs="201 Files">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-lg font-semibold text-gray-900">Personnel — 201 files</h2>
+      <p class="text-sm text-gray-500">Crew &amp; office staff records · drives Fund Collection % &amp; payroll</p></div>
+    <button class="btn btn-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New employee</button>
+  </div>
+
+  <div class="card p-3 mb-4 flex flex-wrap items-center gap-2">
+    <input class="input" style="width:14rem" placeholder="Search name / ID…">
+    <select class="input" style="width:auto"><option>All types</option><option>Driver</option><option>Conductor</option><option>Office</option></select>
+    <select class="input" style="width:auto"><option>Active</option><option>Resigned</option><option>All</option></select>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>ID</th><th>Name</th><th>Position</th><th>Type</th><th class="num">Fund %</th><th>Date hired</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="tnum">D-104</td><td class="font-medium">Marcojos, Eric B.</td><td>Driver</td><td><span class="badge badge-indigo">Driver</span></td><td class="num tnum">1.0</td><td>Mar 12, 2019</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">201</a></td></tr>
+          <tr><td class="tnum">C-209</td><td class="font-medium">Pacquiao, Rebe C.</td><td>Conductor</td><td><span class="badge badge-blue">Conductor</span></td><td class="num tnum">1.0</td><td>Jul 03, 2020</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">201</a></td></tr>
+          <tr><td class="tnum">O-031</td><td class="font-medium">Hilado, Ariel</td><td>Accounting</td><td><span class="badge badge-gray">Office</span></td><td class="num tnum">—</td><td>Jan 15, 2016</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">201</a></td></tr>
+          <tr><td class="tnum">D-088</td><td class="font-medium">Villanueva, Jimmy</td><td>Driver</td><td><span class="badge badge-indigo">Driver</span></td><td class="num tnum">1.5</td><td>Sep 01, 2014</td><td><span class="badge badge-amber">Resigned</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">201</a></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="8">148 personnel · 132 active</td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

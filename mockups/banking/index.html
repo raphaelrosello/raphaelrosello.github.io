@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cash Manager · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="banking" data-base="../" data-title="Cash Manager" data-crumbs="Cash Manager">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-lg font-semibold text-gray-900">Bank accounts</h2>
+      <p class="text-sm text-gray-500">Cash &amp; bank ledgers with running balances · reconciliation</p></div>
+    <button class="btn btn-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New account</button>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-3 mb-5">
+    <div class="card p-4"><div class="text-xs text-gray-500">Total cash position</div><div class="text-2xl font-bold tnum mt-1">₱4,182,640</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">Accounts</div><div class="text-2xl font-bold tnum mt-1">6 active</div></div>
+    <div class="card p-4 ring-1 ring-amber-200 bg-amber-50"><div class="text-xs text-amber-700">Unreconciled items</div><div class="text-2xl font-bold tnum mt-1 text-amber-700">12</div></div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>Bank</th><th>Account no.</th><th>Type</th><th>Account name</th><th class="num">Balance</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="font-medium">BPI</td><td class="tnum">1234-5678-90</td><td>Savings</td><td>ALPS The Bus — Main</td><td class="num tnum">2,418,200.00</td><td><span class="badge badge-green">Reconciled</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">Ledger</a></td></tr>
+          <tr><td class="font-medium">BDO</td><td class="tnum">0098-7654-21</td><td>Savings</td><td>ALPS — Payroll</td><td class="num tnum">842,910.00</td><td><span class="badge badge-amber">8 pending</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">Ledger</a></td></tr>
+          <tr><td class="font-medium">Landbank</td><td class="tnum">4455-1122-33</td><td>Current</td><td>ALPS — RORO ops</td><td class="num tnum">615,330.00</td><td><span class="badge badge-amber">4 pending</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">Ledger</a></td></tr>
+          <tr><td class="font-medium">Cash on hand</td><td class="tnum">—</td><td>Petty cash</td><td>Batangas terminal</td><td class="num tnum">86,200.00</td><td><span class="badge badge-green">Reconciled</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">Ledger</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
