@@ -113,10 +113,15 @@ table.grid tfoot td { padding: .65rem .75rem; border-top: 2px solid #e5e7eb; fon
   #page .input[style*="width"] { max-width: 100%; }
   #page .input[type="date"], #page .input[type="datetime-local"] { width: 100% !important; }
 }
-/* Detail grids (dl.grid): long values shouldn't overflow */
-dl.grid dd, table.grid td { overflow-wrap: anywhere; }
+/* Detail grids (dl.grid): long values wrap; stack to one column on phones */
+dl.grid dd { overflow-wrap: anywhere; }
 @media (max-width: 640px) {
   dl.grid { grid-template-columns: 1fr !important; }   /* stack detail fields on phones */
+}
+/* Data tables on small screens: keep cells on one line and let the table scroll
+   horizontally inside its wrapper, instead of squishing/breaking text mid-word. */
+@media (max-width: 1023px) {
+  table.grid th, table.grid td { white-space: nowrap; }
 }
 
 /* ---- ALPS brand overrides for Tailwind utilities used inline across pages ----
