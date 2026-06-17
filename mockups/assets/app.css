@@ -46,7 +46,8 @@ body:not(.app-ready) #page { visibility: hidden; }
 
 /* ---- Reusable components ---- */
 .card { background: #fff; border-radius: .75rem; box-shadow: 0 1px 2px rgba(16,24,40,.06);
-        box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 0 0 1px #e5e7eb; }
+        box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 0 0 1px #e5e7eb;
+        min-width: 0; }   /* allow shrinking inside grid/flex so wide tables scroll, not the page */
 .badge { display: inline-flex; align-items: center; gap: .25rem; padding: .125rem .5rem;
          border-radius: 9999px; font-size: .6875rem; font-weight: 600; line-height: 1.25rem; }
 .badge-green { background: #e7f6ea; color: #2e8b39; }
@@ -81,6 +82,8 @@ table.grid th, table.grid td { display: table-cell; }
 table.grid thead th { font-size: .6875rem; text-transform: uppercase; letter-spacing: .04em;
    color: #6b7280; text-align: left; padding: .6rem .75rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; }
 table.grid thead th.num { text-align: right; }   /* numeric headers align with their right-aligned cells */
+/* detail-page tables sit directly in a card (no scroll wrapper) — let those cards scroll on small screens */
+.card:has(> table.grid) { overflow-x: auto; }
 table.grid tbody td { padding: .65rem .75rem; border-bottom: 1px solid #f3f4f6; font-size: .875rem; }
 table.grid tbody tr:hover { background: #f9fafb; }
 table.grid tfoot td { padding: .65rem .75rem; border-top: 2px solid #e5e7eb; font-weight: 700; font-size: .875rem; }
@@ -96,6 +99,24 @@ table.grid tfoot td { padding: .65rem .75rem; border-top: 2px solid #e5e7eb; fon
   .no-print { display: none !important; }
   #page { margin: 0 !important; }
   body { background: #fff; }
+}
+
+/* ---- Mobile responsiveness ---- */
+/* Belt-and-suspenders: clip any stray horizontal overflow on small screens so the page never
+   side-scrolls (tables keep their own overflow-x-auto scrollers). `clip` (not `hidden`) avoids
+   creating a scroll container, so it won't affect overflow-y or position:sticky. */
+@media (max-width: 1023px) {
+  #page { overflow-x: clip; }
+}
+/* Filter/toolbar inputs with inline fixed widths shouldn't exceed a narrow screen */
+@media (max-width: 640px) {
+  #page .input[style*="width"] { max-width: 100%; }
+  #page .input[type="date"], #page .input[type="datetime-local"] { width: 100% !important; }
+}
+/* Detail grids (dl.grid): long values shouldn't overflow */
+dl.grid dd, table.grid td { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  dl.grid { grid-template-columns: 1fr !important; }   /* stack detail fields on phones */
 }
 
 /* ---- ALPS brand overrides for Tailwind utilities used inline across pages ----
