@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suppliers · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="suppliers" data-base="../" data-title="Suppliers" data-crumbs="Suppliers">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-lg font-semibold text-gray-900">Supplier accounts</h2>
+      <p class="text-sm text-gray-500">Vendor master with per-supplier transaction ledger</p></div>
+    <button class="btn btn-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Add supplier</button>
+  </div>
+
+  <div class="card p-3 mb-4 flex flex-wrap items-center gap-2">
+    <input class="input" style="width:14rem" placeholder="Search supplier / city…">
+    <select class="input" style="width:auto"><option>Active</option><option>Inactive</option><option>All</option></select>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>ID</th><th>Supplier</th><th>City</th><th>Contact</th><th class="num">Payable</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="tnum">V-021</td><td class="font-medium">Petron Corporation</td><td>Makati</td><td class="tnum">(02) 8884-9200</td><td class="num tnum">158,170.00</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+          <tr><td class="tnum">V-044</td><td class="font-medium">Pilipinas Hino Parts</td><td>Calamba</td><td class="tnum">(049) 545-1100</td><td class="num tnum">42,300.00</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+          <tr><td class="tnum">V-058</td><td class="font-medium">Yokohama Tire Center</td><td>Batangas</td><td class="tnum">(043) 723-8841</td><td class="num tnum">18,900.00</td><td><span class="badge badge-green">Active</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+          <tr><td class="tnum">V-066</td><td class="font-medium">AdBlue Supply PH</td><td>Santa Rosa</td><td class="tnum">(02) 8772-3310</td><td class="num tnum">0.00</td><td><span class="badge badge-gray">Inactive</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Total payable</td><td class="num tnum">219,370.00</td><td colspan="2"></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

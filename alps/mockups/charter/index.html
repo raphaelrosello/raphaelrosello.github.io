@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Special Trip · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="charter" data-base="../" data-title="Special Trip" data-crumbs="Special Trip">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-lg font-semibold text-gray-900">Special trip / bus reservation</h2>
+      <p class="text-sm text-gray-500">Charter bookings with customer accounts &amp; receivables</p></div>
+    <button class="btn btn-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New booking</button>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-4 mb-5">
+    <div class="card p-4"><div class="text-xs text-gray-500">Bookings (month)</div><div class="text-xl font-bold tnum mt-1">23</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">Charter revenue</div><div class="text-xl font-bold tnum mt-1">₱612,400</div></div>
+    <div class="card p-4 ring-1 ring-amber-200 bg-amber-50"><div class="text-xs text-amber-700">Receivable</div><div class="text-xl font-bold tnum mt-1 text-amber-700">₱148,000</div></div>
+    <div class="card p-4"><div class="text-xs text-gray-500">Buses out today</div><div class="text-xl font-bold tnum mt-1">4</div></div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="grid">
+        <thead><tr><th>Date</th><th>Ref</th><th>Customer</th><th>Destination</th><th>Bus</th><th class="num">Contract</th><th class="num">Balance</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>06/18</td><td class="tnum">ST-0231</td><td class="font-medium">LOBO Municipality</td><td>Tagaytay (day tour)</td><td>0123</td><td class="num tnum">38,000.00</td><td class="num tnum text-amber-600">18,000.00</td><td><span class="badge badge-amber">Partial</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+          <tr><td>06/20</td><td class="tnum">ST-0234</td><td class="font-medium">St. Bridget School</td><td>Baguio (2 days)</td><td>0318</td><td class="num tnum">86,000.00</td><td class="num tnum text-amber-600">86,000.00</td><td><span class="badge badge-blue">Reserved</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+          <tr><td>06/12</td><td class="tnum">ST-0228</td><td class="font-medium">Acme Corp outing</td><td>Anilao</td><td>0241</td><td class="num tnum">44,000.00</td><td class="num tnum">0.00</td><td><span class="badge badge-green">Paid</span></td><td class="num"><a href="show.html" class="text-indigo-600 font-medium">View</a></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="5">Outstanding receivable</td><td class="num tnum">168,000.00</td><td class="num tnum">104,000.00</td><td colspan="2"></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

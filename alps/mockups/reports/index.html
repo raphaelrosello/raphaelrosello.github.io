@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reports · ALPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body data-active="reports" data-base="../" data-title="Reports" data-crumbs="Reports">
+<main id="page" class="p-4 sm:p-6 lg:p-8">
+
+  <div class="mb-5">
+    <h2 class="text-lg font-semibold text-gray-900">Reports</h2>
+    <p class="text-sm text-gray-500">~15 report families · most filter by date range and route</p>
+  </div>
+
+  <div id="grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+</main>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+  var REPORTS = [
+    ["Remittance", "Per-route conductor remittance summaries", "receipt", "indigo"],
+    ["Books of Accounts", "CHDJ · GJ · CADJ · CRJ registers", "books", "amber"],
+    ["General Ledger", "GL by account & period", "book", "blue"],
+    ["Fund Collection", "Driver / conductor fund collection", "cash", "green"],
+    ["Payroll", "Register, payslips, summaries", "users", "indigo"],
+    ["Bonus / Daily Commission", "Per-route crew performance pay", "chart", "green"],
+    ["Cash Advance", "Outstanding & recovered advances", "cash", "blue"],
+    ["Bus Diesel", "Fuel by bus / route / location", "bus", "amber"],
+    ["Supplier", "Acquisition: all / per supplier / code", "truck", "gray"],
+    ["Inventory", "Stocks, requisitions, recap tire", "box", "gray"],
+    ["Personnel", "201 rosters & masterlists", "id", "blue"],
+    ["Special Trip", "Charter bookings & receivables", "ticket", "indigo"],
+  ];
+  var ICONS = {
+    receipt:'<path d="M5 3h14v18l-3-2-3 2-3-2-3 2zM8 8h8M8 12h8"/>', books:'<path d="M4 5h4v14H4zM10 5h4v14h-4zM16 6l4 1-2 13-4-1z"/>',
+    book:'<path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2zM9 4v14"/>', cash:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>',
+    users:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 6a3 3 0 0 1 0 6"/>', chart:'<path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-7"/>',
+    bus:'<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M7 17v2M17 17v2"/>', truck:'<path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/>',
+    box:'<path d="M3 7 12 3l9 4-9 4zM3 7v10l9 4 9-4V7"/>', id:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4"/>',
+    ticket:'<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M13 7v10"/>'
+  };
+  document.getElementById("grid").innerHTML = REPORTS.map(function(r){
+    var badge = {indigo:'badge-indigo',amber:'badge-amber',blue:'badge-blue',green:'badge-green',gray:'badge-gray'}[r[3]];
+    return '<button class="card p-5 text-left hover:ring-2 hover:ring-indigo-200 transition">'+
+      '<div class="flex items-center gap-2 mb-2"><span class="h-9 w-9 rounded-lg grid place-items-center '+badge+'">'+
+      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+ICONS[r[2]]+'</svg></span></div>'+
+      '<h3 class="font-semibold text-gray-900">'+r[0]+'</h3><p class="text-xs text-gray-500 mt-0.5">'+r[1]+'</p>'+
+      '<span class="inline-flex items-center gap-1 text-sm text-indigo-600 font-medium mt-3">Generate '+
+      '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>';
+  }).join("");
+</script>
+</body>
+</html>
